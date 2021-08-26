@@ -5,7 +5,7 @@ Forked from [kchen0x](https://github.com/kchen0x/hexo-reference) and edited from
 ## Installation
 
 ```
-  npm i hexo-reference-mashiro
+npm i hexo-reference-mashiro --save
 ```
 
 **Note:** You MUST do this within your Hexo blog's root directory.
