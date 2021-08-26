@@ -1,15 +1,11 @@
 {
-  "name": "hexo-reference",
-  "version": "1.0.4",
-  "description": "A plugin to support markdown footnotes and Wiki-Style tooltip reference in your Hexo blog posts.",
+  "name": "hexo-reference-mashiro",
+  "version": "1.0.0",
+  "description": "Forked from kchen0x and edited from HarborZeng. This version doesn't have tooltips and is optimized for NexT Mashiro.",
   "main": "index.js",
-  "scripts": {
-    "mocha": "./node_modules/.bin/mocha -u bdd",
-    "cov": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kchen0x/hexo-reference.git"
+    "url": "https://github.com/watatomo/hexo-reference-mashiro.git"
   },
   "keywords": [
     "hexo",
@@ -19,20 +15,12 @@
     "reference",
     "tooltip"
   ],
-  "author": "Kun Chen",
+  "author": "Ren (watatomo)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kchen0x/hexo-reference/issues"
+    "url": "https://github.com/watatomo/hexo-reference-mashiro/issues"
   },
-  "homepage": "https://github.com/kchen0x/hexo-reference#readme",
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "coveralls": "^2.11.14",
-    "eslint-config-google": "^0.7.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.1.2",
-    "mocha-lcov-reporter": "^1.2.0"
-  },
+  "homepage": "https://github.com/watatomo/hexo-reference-mashiro#readme",
   "dependencies": {
     "markdown-it": "^8.4.2",
     "hexo-util": "^0.6.3"
