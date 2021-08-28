@@ -14,7 +14,7 @@ npm i hexo-reference-mashiro --save
 
 ### Markdown
 
-```
+```markdown
 Footnote[^1]
 Inline footnote[^2](inline footnote)
 
@@ -28,7 +28,7 @@ Customize the footnote link's style by making a `a.fn` class in your css.
 
 ## Example
 
-```md
+```markdown
 {% bubble Wataru %}
   *Amazing!* Greetings, my beloved compatriots of the Creature Clubs!
 
@@ -42,4 +42,4 @@ Customize the footnote link's style by making a `a.fn` class in your css.
 [^1]: Literally "neither of the land nor the sea" (陸のものとも海のものともつかない). It's modified from a [proverb](https://www.google.com/books/edition/英語のことわざ、 イディオム、フレーズ/f9eJCgAAQBAJ) meaning "neither fish nor fowl"—hard to predict.
 ```
 
-![example](https://raw.githubusercontent.com/watatomo/hexo-reference-mashiro/main/example.gif)
+![example](https://raw.githubusercontent.com/watatomo/hexo-reference-mashiro/master/example.gif)
