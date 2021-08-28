@@ -24,4 +24,22 @@ Inline footnote[^2](inline footnote)
 
 ## Customization
 
-Customize the footnote link's style by making a `a.fn` class.
+Customize the footnote link's style by making a `a.fn` class in your css.
+
+## Example
+
+```md
+{% bubble Wataru %}
+  *Amazing!* Greetings, my beloved compatriots of the Creature Clubs!
+
+  I am neither fin nor fur,[^1] but as we are all creatures of the same world, I shall entertain each and every one of you amicably in our time here together!
+
+  Now, allow me to give a proper welcome! Would you like dinner? A bath? Or would you like...*me?*
+{% endbubble %}
+
+## Translation Notes
+
+[^1]: Literally "neither of the land nor the sea" (陸のものとも海のものともつかない). It's modified from a [proverb](https://www.google.com/books/edition/英語のことわざ、 イディオム、フレーズ/f9eJCgAAQBAJ) meaning "neither fish nor fowl"—hard to predict.
+```
+
+![example](https://raw.githubusercontent.com/watatomo/hexo-reference-mashiro/main/example.gif)
