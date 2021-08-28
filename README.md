@@ -1,6 +1,6 @@
 # hexo-reference-mashiro
 
-Forked from [kchen0x](https://github.com/kchen0x/hexo-reference) and edited from [HarborZeng](https://github.com/HarborZeng/hexo-reference/blob/master/src/footnotes.js). This version doesn't have tooltips and is optimized for [NexT Mashiro](https://github.com/watatomo/next-mashiro).
+Forked from [kchen0x](https://github.com/kchen0x/hexo-reference) and edited from [HarborZeng](https://github.com/HarborZeng/hexo-reference/blob/master/src/footnotes.js). This allows you to use Markdown footnotes within Hexo's tag plugins and elsewhere.
 
 ## Installation
 
@@ -13,17 +13,13 @@ npm i hexo-reference-mashiro --save
 ## Syntax
 
 ### Markdown
-```
-basic footnote[^1]
-here is an inline footnote[^2](inline footnote)
-and another one[^3]
-and another one[^4]
 
-[^1]: basic footnote content
-[^3]: paragraph
-footnote
-content
-[^4]: footnote content with some [markdown](https://en.wikipedia.org/wiki/Markdown)
+```
+Footnote[^1]
+Inline footnote[^2](inline footnote)
+
+[^1]: Content
+[^2]: This uses [Markdown](https://en.wikipedia.org/wiki/Markdown), so you can add links here and the likes.
 ```
 
 ## Customization

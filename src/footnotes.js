@@ -56,7 +56,11 @@ function renderFootnotes(text) {
         function (match, index) {
             var tooltip = indexMap[index].content;
             return util.htmlTag('sup', {id: "fnref:" + index},
-                util.htmlTag('a', {href: "#fn:" + index, rel: "footnote", class: "fn"}, "[" + index + "]", false), false)
+                util.htmlTag('a', {href: "#fn:" + index, rel: "footnote"},
+                    util.htmlTag("span", {
+                        class: "hint--top hint--medium hint--rounded",
+                        "aria-label": tooltip.replace(/(\r\n|\n|\r)/gm, "").replace(/'/g, "&apos;").replace(/"/g, "&quot;").replace(/\[(.*?)\][\[\(].*?[\]\)]/g, '$1').replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, '$2').replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, '$2').replace(/~~/g, '').replace(/<[^>]*>/g, '')
+                    }, "[" + index + "]", false), false), false)
         });
 
     // sort footnotes by their index
