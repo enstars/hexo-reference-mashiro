@@ -18,8 +18,7 @@ npm i hexo-reference-mashiro --save
 Footnote[^1]
 Inline footnote[^2](inline footnote)
 
-[^1]: Content
-[^2]: This uses [Markdown](https://en.wikipedia.org/wiki/Markdown), so you can add links here and the likes.
+[^1]: This uses [Markdown](https://en.wikipedia.org/wiki/Markdown), so you can add links here and the likes.
 ```
 
 ## Customization

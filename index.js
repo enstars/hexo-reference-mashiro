@@ -14,7 +14,7 @@ hexo.extend.filter.register('after_post_render', function(data) {
             {
                 rel: 'stylesheet',
                 type: 'text/css',
-                href: `https://cdn.jsdelivr.net/npm/hexo-reference-mashiro/src/hint.min.css`
+                href: `https://cdn.jsdelivr.net/npm/hexo-reference-mashiro@latest/src/hint.min.css`
             }) +
         data.content;
     return data;

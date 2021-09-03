@@ -1,6 +1,6 @@
 {
   "name": "hexo-reference-mashiro",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Forked from kchen0x and edited from HarborZeng. This allows you to use Markdown footnotes within Hexo's tag plugins and elsewhere.",
   "main": "index.js",
   "repository": {
