@@ -10,6 +10,8 @@ npm i hexo-reference-mashiro --save
 
 **Note:** You MUST do this within your Hexo blog's root directory.
 
+Place `<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-reference-mashiro@latest/src/css/hint.min.css">` under `<head>`.
+
 ## Syntax
 
 ### Markdown
