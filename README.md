@@ -25,17 +25,17 @@ Inline footnote[^2](inline footnote)
 
 ## Customization
 
-Customize the footnote link's style by making a `a.fn` class in your css.
+Customize the footnote link's style by making a `.msr-fn` class in your css.
 
 ## Example
 
 ```markdown
 {% bubble Wataru %}
-  *Amazing!* Greetings, my beloved compatriots of the Creature Clubs!
+    *Amazing!* Greetings, my beloved compatriots of the Creature Clubs!
 
-  I am neither fin nor fur,[^1] but as we are all creatures of the same world, I shall entertain each and every one of you amicably in our time here together!
+    I am neither fin nor fur,[^1] but as we are all creatures of the same world, I shall entertain each and every one of you amicably in our time here together!
 
-  Now, allow me to give a proper welcome! Would you like dinner? A bath? Or would you like...*me?*
+    Now, allow me to give a proper welcome! Would you like dinner? A bath? Or would you like...*me?*
 {% endbubble %}
 
 ## Translation Notes

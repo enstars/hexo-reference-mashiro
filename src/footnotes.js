@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-var md = require('markdown-it')({
+var md = require("markdown-it")({
     // allow HTML tags
-    html: true
+    html: true,
 });
 
-const util = require('hexo-util')
+const util = require("hexo-util");
 
 /**
  * Render markdown footnotes
@@ -17,51 +17,71 @@ function renderFootnotes(text) {
     var reFootnoteContent = /\[\^(\d+)\]: ?([\S\s]+?)(?=\[\^(?:\d+)\]|\n\n|$)/g;
     var reInlineFootnote = /\[\^(\d+)\]\((.+?)\)/g;
     var reFootnoteIndex = /\[\^(\d+)\]/g;
-    var html = '';
+    var html = "";
 
     // treat all inline footnotes
     text = text.replace(reInlineFootnote, function (match, index, content) {
         footnotes.push({
             index: index,
-            content: content
+            content: content,
         });
         // remove content of inline footnote
-        return '[^' + index + ']';
+        return "[^" + index + "]";
     });
 
     // treat all footnote contents
     text = text.replace(reFootnoteContent, function (match, index, content) {
         footnotes.push({
             index: index,
-            content: content
+            content: content,
         });
         // remove footnote content
-        return '';
+        return "";
     });
 
     // create map for looking footnotes array
     function createLookMap(field) {
-        var map = {}
+        var map = {};
         for (var i = 0; i < footnotes.length; i++) {
-            var item = footnotes[i]
-            var key = item[field]
-            map[key] = item
+            var item = footnotes[i];
+            var key = item[field];
+            map[key] = item;
         }
-        return map
+        return map;
     }
-    var indexMap = createLookMap("index")
+    var indexMap = createLookMap("index");
 
     // render (HTML) footnotes reference
-    text = text.replace(reFootnoteIndex,
-        function (match, index) {
-            var tooltip = indexMap[index].content;
-            return util.htmlTag('sup', {id: "fnref:" + index},
-                util.htmlTag('a', {href: "#fn:" + index, rel: "footnote", class: "fn"},
-                    util.htmlTag("span", {
+    text = text.replace(reFootnoteIndex, function (match, index) {
+        var tooltip = indexMap[index].content;
+        return util.htmlTag(
+            "sup",
+            { id: "fnref:" + index },
+            util.htmlTag(
+                "a",
+                { href: "#fn:" + index, rel: "footnote", class: "fn" },
+                util.htmlTag(
+                    "span",
+                    {
                         class: "hint--top hint--medium hint--rounded",
-                        "aria-label": tooltip.replace(/(\r\n|\n|\r)/gm, "").replace(/'/g, "&apos;").replace(/"/g, "&quot;").replace(/\[(.*?)\][\[\(].*?[\]\)]/g, '$1').replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, '$2').replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, '$2').replace(/~~/g, '').replace(/<[^>]*>/g, '')
-                    }, "[" + index + "]", false), false), false)
-        });
+                        "aria-label": tooltip
+                            .replace(/(\r\n|\n|\r)/gm, "")
+                            .replace(/'/g, "&apos;")
+                            .replace(/"/g, "&quot;")
+                            .replace(/\[(.*?)\][\[\(].*?[\]\)]/g, "$1")
+                            .replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, "$2")
+                            .replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, "$2")
+                            .replace(/~~/g, "")
+                            .replace(/<[^>]*>/g, ""),
+                    },
+                    "[" + index + "]",
+                    false
+                ),
+                false
+            ),
+            false
+        );
+    });
 
     // sort footnotes by their index
     footnotes.sort(function (a, b) {
@@ -71,17 +91,19 @@ function renderFootnotes(text) {
     // render footnotes (HTML)
     footnotes.forEach(function (footNote) {
         html += '<li id="fn:' + footNote.index + '">';
-        html += '<span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="#fnref:' + footNote.index + '" rev="footnote" class="fn">↑</a> ';
+        html +=
+            '<a href="#fnref:' +
+            footNote.index +
+            '" class="arrow">↑</a> ';
         html += md.renderInline(footNote.content.trim());
-        html += '</span></li>';
+        html += "</span></li>";
     });
 
     // add footnotes at the end of the content
     if (footnotes.length) {
-        text += '<div id="footnotes">';
-        text += '<div id="footnotelist">';
-        text += '<ol style="padding-left: 0; margin-left: 20px">' + html + '</ol>';
-        text += '</div></div>';
+        text += '<div class="msr-fn">';
+        text += '<ol>' + html + "</ol>";
+        text += "</div>";
     }
     return text;
 }
