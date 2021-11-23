@@ -55,30 +55,23 @@ function renderFootnotes(text) {
     text = text.replace(reFootnoteIndex, function (match, index) {
         var tooltip = indexMap[index].content;
         return util.htmlTag(
-            "sup",
-            { id: "fnref:" + index },
-            util.htmlTag(
-                "a",
-                { href: "#fn:" + index, rel: "footnote", class: "fn" },
-                util.htmlTag(
-                    "span",
-                    {
-                        class: "hint--top hint--medium hint--rounded",
-                        "aria-label": tooltip
-                            .replace(/(\r\n|\n|\r)/gm, "")
-                            .replace(/'/g, "&apos;")
-                            .replace(/"/g, "&quot;")
-                            .replace(/\[(.*?)\][\[\(].*?[\]\)]/g, "$1")
-                            .replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, "$2")
-                            .replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, "$2")
-                            .replace(/~~/g, "")
-                            .replace(/<[^>]*>/g, ""),
-                    },
-                    "[" + index + "]",
-                    false
-                ),
-                false
-            ),
+            "a",
+            {
+                class: "msr-fn-inline",
+                "data-tippy-content": tooltip
+                    .replace(/(\r\n|\n|\r)/gm, "")
+                    .replace(/'/g, "&apos;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/\[(.*?)\]\((.*?)\)/gim, "<a href=&quot;$2&quot;>$1</a>")
+                    .replace(/!\[(.*?)\]\((.*?)\)/gim, "<img alt=&quot;$1&quot; src=&quot;$2&quot; />")
+                    .replace(/\*\*(.*)\*\*/gim, "<b>$1</b>")
+                    .replace(/\*(.*)\*/gim, "<i>$1</i>")
+                    .replace(/_(.*)_/gim, "<i>$1</i>")
+                    .replace(/`(.*)`/gim, "<code>$1</code>")
+                    .replace(/~~(.*)~~/gim, "<s>$1</s>"),
+                id: "fnref:" + index,
+            },
+            index,
             false
         );
     });
@@ -91,20 +84,18 @@ function renderFootnotes(text) {
     // render footnotes (HTML)
     footnotes.forEach(function (footNote) {
         html += '<li id="fn:' + footNote.index + '">';
-        html +=
-            '<a href="#fnref:' +
-            footNote.index +
-            '" class="arrow">↑</a> ';
+        html += '<a href="#fnref:' + footNote.index + '" class="arrow">↑</a> ';
         html += md.renderInline(footNote.content.trim());
-        html += "</span></li>";
+        html += "</li>";
     });
 
     // add footnotes at the end of the content
     if (footnotes.length) {
         text += '<div class="msr-fn">';
-        text += '<ol>' + html + "</ol>";
+        text += "<ol>" + html + "</ol>";
         text += "</div>";
     }
     return text;
 }
+
 module.exports = renderFootnotes;
